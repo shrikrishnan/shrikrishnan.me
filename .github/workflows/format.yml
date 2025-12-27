@@ -1,0 +1,47 @@
+name: Auto Format
+
+on:
+  pull_request:
+    branches:
+      - main
+      - feature/**
+    paths:
+      - '**/*.js'
+      - '**/*.css'
+      - '**/*.html'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Prettier
+        run: npm install prettier@3
+
+      - name: Run Prettier
+        run: npx prettier "**/*.{js,css,html}" --write
+
+      - name: Commit changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "chore: auto-format (prettier)"
+            git push origin HEAD:${{ github.head_ref }}
+          else
+            echo "No formatting changes."
