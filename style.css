@@ -136,6 +136,21 @@ header p {
   font-weight: bold;
   color: #eaeaea;
   text-shadow: 0 2px 24px #72d2ff88;
+  margin: 0;
+}
+
+h1.typewriter {
+  overflow: hidden;
+  border-right: .13em solid #40a0ff;
+  white-space: nowrap;
+  letter-spacing: .1em;
+  animation: typing 2.1s steps(40, end) 1s both,
+    blink-caret 0.8s step-end infinite;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #eaeaea;
+  text-shadow: 0 2px 24px #72d2ff88;
+  margin: 0;
 }
 
 @keyframes typing {
