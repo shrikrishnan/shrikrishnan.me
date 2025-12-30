@@ -31,54 +31,62 @@ body {
 }
 
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #1e1f29;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 24px;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 2rem 1rem;
+  background: var(--card-bg);
+  border-bottom: 2px solid var(--accent-color);
 }
 
-/* Internal Flexbox */
 .header-container {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 /* Left Side */
 .header-left {
+  flex: 1;
+  min-width: 250px;
   text-align: left;
+}
+
+.header-left h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.header-left p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
 }
 
 /* Right Side */
 .header-right {
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
-  gap: 12px;
 }
 
-/* Resume Button */
 .button {
-  background: #353757;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: white;
   text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: opacity 0.3s;
+  white-space: nowrap;
 }
 
 .button:hover {
-  background: #45477e;
+  opacity: 0.9;
 }
 
 /* Dark Mode Toggle */
@@ -113,8 +121,8 @@ header {
 
 header p {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.2;
+  font-size: 0.8rem;
+  line-height: 1.1;
 }
 
 .header-right {
@@ -132,7 +140,7 @@ header p {
   /* loop typing forward/backward */
   animation: typing 2.5s steps(40, end) 0.5s infinite alternate,
     blink-caret 0.8s step-end infinite;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #eaeaea;
   text-shadow: 0 2px 24px #72d2ff88;
@@ -146,7 +154,7 @@ h1.typewriter {
   letter-spacing: .1em;
   animation: typing 2.5s steps(40, end) 0.5s infinite alternate,
     blink-caret 0.8s step-end infinite;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #eaeaea;
   text-shadow: 0 2px 24px #72d2ff88;
@@ -228,14 +236,12 @@ h1.typewriter {
 
 #contact {
   background: linear-gradient(135deg, rgba(40, 44, 70, 0.95), rgba(25, 28, 45, 0.95));
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 0 18px rgba(80, 155, 255, 0.22),
-    0 0 42px rgba(60, 120, 255, 0.13);
-  max-width: 640px;
-  margin: 70px auto;
+  padding: 32px 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(80, 155, 255, 0.15);
+  max-width: 900px;
+  margin: 50px auto;
   color: #eaeaea;
-  animation: glowBox 2s ease-in-out infinite alternate;
 }
 
 @keyframes glowBox {
@@ -251,17 +257,19 @@ h1.typewriter {
 }
 
 #contact .section-title {
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 1.6rem;
+  margin-bottom: 24px;
   text-align: center;
   color: #a6cbff;
-  text-shadow: 0 0 18px rgba(100, 180, 255, 0.5);
+  text-shadow: 0 0 10px rgba(100, 180, 255, 0.25);
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 #contact .contact-info p {
-  margin: 14px 0;
-  font-size: 17px;
-  line-height: 1.7;
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.5;
   color: #d8d8d8;
 }
 
@@ -270,11 +278,13 @@ h1.typewriter {
   color: #5dbbff;
   font-weight: 600;
   transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
 }
 
 #contact a:hover {
-  color: #fff;
-  text-shadow: 0 0 16px #40a0ff;
+  color: #40a0ff;
+  border-bottom: 1px solid #40a0ff;
+  text-shadow: 0 0 12px rgba(64, 160, 255, 0.4);
 }
 
 .contact-item {
@@ -310,6 +320,66 @@ h1.typewriter {
   }
 }
 
+
+.section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-item {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #5dbbff;
+  border-radius: 6px;
+  line-height: 1.5;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: #40a0ff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(80, 155, 255, 0.15);
+}
+
+#skills ul {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#skills li {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #5dbbff;
+  border-radius: 6px;
+  line-height: 1.4;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+#skills li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: #40a0ff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(80, 155, 255, 0.15);
+}
+
+#skills strong {
+  color: var(--accent-color);
+}
 
 .section {
   max-width: 820px;
@@ -439,5 +509,76 @@ footer p {
 
   body {
     padding-top: 70px;
+  }
+}
+
+/* Mobile Responsive Header */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .header-left {
+    width: 100%;
+  }
+
+  .header-left h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .header-left p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+
+  .header-right {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .button {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .dark-toggle {
+    padding: 0.65rem;
+    min-width: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left h1 {
+    font-size: 1.2rem;
+  }
+
+  .header-left p {
+    font-size: 0.85rem;
+  }
+
+  .header-right {
+    gap: 0.4rem;
+  }
+
+  .button {
+    min-width: 100px;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .dark-toggle {
+    padding: 0.6rem;
+    min-width: 40px;
   }
 }
